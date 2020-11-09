@@ -14,7 +14,7 @@
 var config_crack = {
     //全局配置
     auto_highest_quality: true, //是否自动切换最高清晰度
-    beibei_password: "202009041", //请在这里输入群公告的密码
+    beibei_password: "2020102601", //请在这里输入群公告的密码
 };
 if (location.toString().indexOf("www.bilibili.com") <= -1) {
     if (self != top) {
@@ -23,7 +23,7 @@ if (location.toString().indexOf("www.bilibili.com") <= -1) {
             config_crack.beibei_password +
             "; expires=Thu, 18 Dec 2999 12:00:00 GMT; path=/api/bilibili";
 
-            console.warn('document.cookie   ', document.cookie)
+            console.warn('document.cookie', document.cookie)
     }
     window.onload = function () {
 
@@ -35,10 +35,11 @@ if (location.toString().indexOf("www.bilibili.com") <= -1) {
                 },
                 false
             );
-            console.log('"input[name="bilibiliurl0815"]"  ', $("input[name='bilibiliurl0815']").val())
-            if ($("input[name='bilibiliurl0815']").val().length > 0) {
+            console.warn($("input[name*='bilibiliurl']").val())
+            if ($("input[name*='bilibiliurl']").val().length > 0) {
                 function get_quality() {
-                    console.log($("#listhd").children("option[selected]").text(), ' ?= ', $("#listhd").children("option").first().text())
+                    console.log($("#listhd").children("option[selected]").text(), 'ddd', $("#listhd").children("option").first().text())
+                    console.log($("#listhd"))
                     if (
                         $("#listhd").children("option[selected]").text() ===
                         $("#listhd").children("option").first().text()
@@ -98,10 +99,10 @@ if (location.toString().indexOf("www.bilibili.com") <= -1) {
             } else {
                 var c = setInterval(function () {
                     if (
-                        $("input[name='bilibiliurl0815']").length > 0 &&
+                        $("input[name*='bilibiliurl']").length > 0 &&
                         $("#button-1").length > 0
                     ) {
-                        $("input[name='bilibiliurl0815']").val(window.get_url);
+                        $("input[name*='bilibiliurl']").val(window.get_url);
                         $("#button-1").click();
                         parent.postMessage("refresh", "*");
                         clearInterval(c);
@@ -178,7 +179,7 @@ if (location.toString().indexOf("www.bilibili.com") <= -1) {
                                 break;
                         }
                     } else {
-                        console.log(d)
+                        console.warn(d)
                         if (typeof d.data !== 'string') return
                         var e = JSON.parse(d.data);
                         window.beibei_url_quality = e.quality;
