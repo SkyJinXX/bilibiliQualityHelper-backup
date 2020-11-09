@@ -186,40 +186,16 @@ if (location.toString().indexOf("www.bilibili.com") <= -1) {
                         window.beibei_url_video = e.m4s_video;
                         window.beibei_url_audio = e.m4s_audio;
                         $("#beibei").remove();
-                        $(".bui-select-list")
-                            .find(
-                                "span:contains(" +
-                                    window.beibei_url_quality +
-                                    ")"
-                            )
-                            .parents("li")
+                        $(".bilibili-player-video-quality-menu .bui-select-item").first()
                             .removeAttr("data-value")
                             .attr("crack_option", "true");
                         if (
-                            $(".bui-select-list")
-                                .find(
-                                    "span:contains(" +
-                                        window.beibei_url_quality +
-                                        ")"
-                                )
-                                .siblings(".bilibili-player-bigvip").length > 0
+                            $(".bilibili-player-video-quality-menu .bui-select-item").first().children(".bilibili-player-bigvip").length > 0
                         ) {
-                            $(".bui-select-list")
-                                .find(
-                                    "span:contains(" +
-                                        window.beibei_url_quality +
-                                        ")"
-                                )
-                                .siblings(".bilibili-player-bigvip")
+                            $(".bilibili-player-video-quality-menu .bui-select-item").first().children(".bilibili-player-bigvip")
                                 .text("已破解");
                         } else {
-                            $(".bui-select-list")
-                                .find(
-                                    "span:contains(" +
-                                        window.beibei_url_quality +
-                                        ")"
-                                )
-                                .siblings(".bilibili-player-needlogin")
+                            $(".bilibili-player-video-quality-menu .bui-select-item").first().children(".bilibili-player-needlogin")
                                 .text("已破解");
                         }
                         var f = setTimeout(function () {
@@ -262,13 +238,7 @@ if (location.toString().indexOf("www.bilibili.com") <= -1) {
                                 $(".bui-select-item-active").removeClass(
                                     "bui-select-item-active"
                                 );
-                                $(".bui-select-list")
-                                    .find(
-                                        "span:contains(" +
-                                            window.beibei_url_quality +
-                                            ")"
-                                    )
-                                    .parents("li")
+                                $(".bilibili-player-video-quality-menu .bui-select-item").first()
                                     .addClass("bui-select-item-active");
                                 window.origin_video = $(
                                     ".bilibili-player-video"
